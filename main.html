@@ -12,23 +12,34 @@
     </header>
     
     <main>
+
         <section id="code-editor">
             <h2 class="ueberschrift">Code-Editor</h2>
-            <textarea placeholder="Hier Code eingeben..."></textarea>
+            <textarea id="code-input" placeholder="Hier Code eingeben..."></textarea>
         </section>
-        
+
         <section id="chat-bereich">
             <h2 class="ueberschrift">Diskussion</h2>
-            <div id="chat-messages">
-                <!-- Chat-Nachrichten kommen hier hin -->
+
+            <!-- ✅ Benutzername-Eingabe -->
+            <div id="username-container">
+                <input type="text" id="username-input" placeholder="Dein Name">
+                <button id="confirm-username">Bestätigen</button>
             </div>
+
+            <div id="chat-messages"></div>
+
             <input type="text" id="chat-input" placeholder="Nachricht eingeben...">
             <button id="send-button">Senden</button>
+            <button id="clear-chat">Chat leeren</button>
         </section>
+
     </main>
     
     <footer>
         <p>&copy; 2025 Code-Review-Plattform</p>
     </footer>
+    
+    <script src="function.js"></script>
 </body>
 </html>
