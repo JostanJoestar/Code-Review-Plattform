@@ -16,12 +16,54 @@ header {
     text-align: center;
 }
 
+
 main {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     flex: 1;
     overflow: hidden;
+}
+
+#toggle-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#toggle-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: rgb(255, 153, 0);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 12em;
+}
+
+#show-output
+{
+    left: 28em;
+}
+
+#show-input
+{
+    left: 16em;
+}
+
+#code-input-section, #code-output-section {
+    background: #535353;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 44em;
+    display: none; /* Standardmäßig ausgeblendet */
+    flex-direction: column;
+}
+
+#code-input-section.active, #code-output-section.active {
+    display: flex; /* Nur die aktive Ansicht anzeigen */
 }
 
 #code-editor, #chat-bereich {
@@ -39,12 +81,17 @@ main {
     margin-right: 20px;
 }
 
+.codeWrapper
+{
+    width: 85em;
+    margin-right: 2em;
+}
+
 #chat-bereich {
     flex: 1;
 }
 
 textarea {
-    width: 88em;
     flex: 1;
     font-family: monospace;
     padding: 10px;
@@ -80,6 +127,7 @@ textarea {
     cursor: pointer;
 }
 
+
 footer {
     background-color: #333;
     color: white;
@@ -90,7 +138,32 @@ footer {
     width: 100%;
 }
 
-.ueberschrift
-{
-    color:rgb(255, 153, 0);
+.ueberschrift {
+    color: rgb(255, 153, 0);
+}
+
+
+.comment-input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.comment {
+    background: #f9f9f9;
+    padding: 5px;
+    margin-top: 5px;
+    border-left: 3px solid #ff9900;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+pre, code {
+    pointer-events: auto; /* Sicherstellen, dass das Element klickbar ist */
+    user-select: text; /* Textauswahl ermöglichen */
 }

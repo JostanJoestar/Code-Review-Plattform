@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code-Review-Plattform</title>
     <link rel="stylesheet" href="mainStyle.css">
+    <!-- Prism.js Styles & Scripts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+
+
 </head>
 <body>
     <header>
@@ -13,10 +20,28 @@
     
     <main>
 
-        <section id="code-editor">
-            <h2 class="ueberschrift">Code-Editor</h2>
-            <textarea id="code-input" placeholder="Hier Code eingeben..."></textarea>
+        <!-- Buttons zum Wechseln der Ansicht -->
+        <div id="toggle-buttons">
+            <button id="show-input">Code eingeben</button>
+            <button id="show-output">Code anzeigen</button>
+        </div>
+        
+        <section class="codeWrapper">
+            <!-- Container für die Textarea -->
+            <section id="code-input-section" class="active">
+                <h2 class="ueberschrift">Code eingeben</h2>
+                <textarea id="code-input" placeholder="Hier Code eingeben..."></textarea>
+            </section>
+    
+            <!-- Container für die Prism.js-Ansicht -->
+            <section id="code-output-section">
+                <h2 class="ueberschrift">Code anzeigen</h2>
+                <pre><code id="code-output" class="language-java"></code></pre>
+                <!-- Container für Kommentare -->
+                <div id="comments-container"></div>
+            </section>
         </section>
+
 
         <section id="chat-bereich">
             <h2 class="ueberschrift">Diskussion</h2>
