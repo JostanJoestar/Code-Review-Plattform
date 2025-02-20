@@ -1,70 +1,89 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code-Review-Plattform</title>
-    <link rel="stylesheet" href="mainStyle.css">
-    <!-- Prism.js Styles & Scripts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code-Review-Plattform</title>
+  
+  <!-- Haupt-Styles -->
+  <link rel="stylesheet" href="mainStyle.css">
 
+  <!-- Prism.js Styles -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
+    rel="stylesheet"
+  />
 
+  <!-- Prism.js Core -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <!-- Sprachunterstützung -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+
+  <!-- Line Numbers Plugin -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Code-Review-Plattform</h1>
-    </header>
-    
-    <main>
-
-        <!-- Buttons zum Wechseln der Ansicht -->
-        <div id="toggle-buttons">
+  <header>
+      <h1>Code-Review-Plattform</h1>
+  </header>
+  
+  <main>
+    <section class="codeWrapper">
+  
+        <!-- Gemeinsamer Header für den Code-Bereich -->
+        <div class="section-header">
+          <h2 class="ueberschrift" id="code-section-title">Code eingeben</h2>
+          <div id="toggle-buttons">
             <button id="show-input">Code eingeben</button>
             <button id="show-output">Code anzeigen</button>
+          </div>
         </div>
-        
-        <section class="codeWrapper">
-            <!-- Container für die Textarea -->
-            <section id="code-input-section" class="active">
-                <h2 class="ueberschrift">Code eingeben</h2>
-                <textarea id="code-input" placeholder="Hier Code eingeben..."></textarea>
-            </section>
-    
-            <!-- Container für die Prism.js-Ansicht -->
-            <section id="code-output-section">
-                <h2 class="ueberschrift">Code anzeigen</h2>
-                <pre><code id="code-output" class="language-java"></code></pre>
-                <!-- Container für Kommentare -->
-                <div id="comments-container"></div>
-            </section>
+      
+        <!-- Bereich Code-Eingabe -->
+        <section id="code-input-section" class="active">
+          <!-- Hier kannst du optional H2 weglassen, da wir oben schon einen Titel haben -->
+          <textarea id="code-input" placeholder="Hier Code eingeben..."></textarea>
         </section>
-
-
-        <section id="chat-bereich">
-            <h2 class="ueberschrift">Diskussion</h2>
-
-            <!-- ✅ Benutzername-Eingabe -->
-            <div id="username-container">
-                <input type="text" id="username-input" placeholder="Dein Name">
-                <button id="confirm-username">Bestätigen</button>
-            </div>
-
-            <div id="chat-messages"></div>
-
-            <input type="text" id="chat-input" placeholder="Nachricht eingeben...">
-            <button id="send-button">Senden</button>
-            <button id="clear-chat">Chat leeren</button>
+      
+        <!-- Bereich Code-Ausgabe -->
+        <section id="code-output-section">
+          <pre class="line-numbers">
+            <code class="language-java" id="code-output"></code>
+          </pre>
+          
+          <div id="comments-container"></div>
         </section>
+      
+      </section>
+      
+      
+      <!-- Chat-Bereich -->
+      <section id="chat-bereich">
+          <h2 class="ueberschrift">Diskussion</h2>
+  
+          <div id="username-container">
+              <input type="text" id="username-input" placeholder="Dein Name">
+              <button id="confirm-username">Bestätigen</button>
+          </div>
+  
+          <div id="chat-messages"></div>
+  
+          <input type="text" id="chat-input" placeholder="Nachricht eingeben...">
+          <button id="send-button">Senden</button>
+          <button id="clear-chat">Chat leeren</button>
+      </section>
+  </main>
+  
+  <footer>
+      <p>&copy; 2025 Code-Review-Plattform</p>
+  </footer>
 
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 Code-Review-Plattform</p>
-    </footer>
-    
-    <script src="function.js"></script>
+  <!-- Dein JavaScript-Code -->
+  <script defer src="function.js"></script>
 </body>
 </html>

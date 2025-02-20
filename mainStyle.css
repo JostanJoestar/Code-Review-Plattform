@@ -1,4 +1,4 @@
-/* Grundlegende Stile */
+/* ========== Allgemeine Layout-Einstellungen ========== */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -16,7 +16,6 @@ header {
     text-align: center;
 }
 
-
 main {
     display: flex;
     justify-content: space-between;
@@ -25,79 +24,95 @@ main {
     overflow: hidden;
 }
 
+/* ========== Toggle-Buttons ========== */
 #toggle-buttons {
-    text-align: center;
+    position: relative;
     margin-bottom: 20px;
 }
 
 #toggle-buttons button {
     padding: 10px 20px;
-    margin: 0 10px;
     background-color: rgb(255, 153, 0);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    position: absolute;
-    top: 12em;
+    margin-right: 10px;
 }
 
-#show-output
-{
-    left: 28em;
-}
-
-#show-input
-{
-    left: 16em;
-}
-
-#code-input-section, #code-output-section {
+/* ========== Code-Wrapper-Bereich ========== */
+.codeWrapper {
+    /* schon vorhanden: dimensionen, styling */
+    width: 60%;
+    height: 44em;
+    margin-right: 20px;
     background: #535353;
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 44em;
-    display: none; /* Standardmäßig ausgeblendet */
-    flex-direction: column;
-}
-
-#code-input-section.active, #code-output-section.active {
-    display: flex; /* Nur die aktive Ansicht anzeigen */
-}
-
-#code-editor, #chat-bereich {
-    background: #535353;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 44em;
     display: flex;
     flex-direction: column;
-}
-
-#code-editor {
-    flex: 2;
-    margin-right: 20px;
-}
-
-.codeWrapper
-{
-    width: 85em;
-    margin-right: 2em;
-}
-
-#chat-bereich {
+    gap: 1rem;
+  }
+  
+  /* Gemeinsamer Header für Titel + Buttons */
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Titel links, Buttons rechts */
+    margin-bottom: 10px;
+  }
+  
+  #toggle-buttons button {
+    margin-left: 10px; /* etwas Abstand zwischen den Buttons */
+  }
+  
+  /* Input- und Output-Section toggeln */
+  #code-input-section,
+  #code-output-section {
+    background: #333;
+    padding: 15px;
+    border-radius: 5px;
     flex: 1;
-}
-
-textarea {
-    flex: 1;
+    display: none; /* oder block/flex, je nach Layout */
+  }
+  
+  #code-input-section.active {
+    display: block; 
+  }
+  #code-output-section.active {
+    display: block;
+  }
+  
+  #code-input {
+    width: 98%;
+    height: 41em;
     font-family: monospace;
     padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 5px;
-    resize: none;
+    border: 1px solid #999;
+  }
+  
+  /* Prism-Bereich */
+  #code-output-section pre.line-numbers {
+    background: #282c34;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    height: 34em; /* falls gewünscht */
+  }
+
+/* ========== Chat-Bereich ========== */
+#chat-bereich {
+    background: #535353;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    height: 44em;
 }
 
 #chat-messages {
@@ -127,7 +142,7 @@ textarea {
     cursor: pointer;
 }
 
-
+/* ========== Footer & Titel ========== */
 footer {
     background-color: #333;
     color: white;
@@ -142,28 +157,37 @@ footer {
     color: rgb(255, 153, 0);
 }
 
+/* ========== Line-Number-Plugin Styling (optional) ========== */
+.line-numbers .line-numbers-rows {
+  padding-left: 0; /* statt 1em oder so */
+  margin-left: 0;
+  }
+  
+  /* Den Zeilennummern selbst mehr oder weniger Platz geben */
+  .line-numbers .line-numbers-rows > span:before {
+    width: 2em; 
+    margin-right: 5px; 
+    text-align: right;
+  }
 
-.comment-input {
-    width: 100%;
-    padding: 5px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
+  pre[class*="language-"].line-numbers > code {
+    position: absolute !important; 
+    left: 4em;
+}
+
+#comments-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 300px;
+  max-height: 600px; /* optional scrollen */
+  overflow-y: auto;
 }
 
 .comment {
-    background: #f9f9f9;
-    padding: 5px;
-    margin-top: 5px;
-    border-left: 3px solid #ff9900;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    color: #333;
-}
-
-pre, code {
-    pointer-events: auto; /* Sicherstellen, dass das Element klickbar ist */
-    user-select: text; /* Textauswahl ermöglichen */
+  margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px;
+  border-left: 3px solid #ff9900;
+  color: #fff;
 }
