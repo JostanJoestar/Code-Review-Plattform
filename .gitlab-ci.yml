@@ -1,11 +1,10 @@
 pages:
   stage: deploy
   script:
-    - mkdir .public
-    - cp -r * .public
-    - mv .public public
+    - echo "Deploying GitLab Pages..."
   artifacts:
     paths:
       - public
   only:
-    - main  # Falls dein Branch 'master' heißt, ändere es zu: - master
+    - main  # oder 'master', je nach deinem Branch
+
