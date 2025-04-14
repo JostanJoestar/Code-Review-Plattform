@@ -1,36 +1,41 @@
-const express = require("express");
-const http = require("http");
-const { Server } = require("socket.io");
+const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
+const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.use(express.static("public"));
+// Statischer Ordner für HTML, CSS, JS
+app.use(express.static(path.join(__dirname, 'public')));
 
-io.on("connection", (socket) => {
-  console.log("Ein Benutzer ist verbunden");
+// WebSocket-Logik
+io.on('connection', (socket) => {
+    console.log('Ein Nutzer verbunden: ' + socket.id);
 
-  // Chat Nachricht empfangen und an alle senden
-  socket.on("chatMessage", (data) => {
-    io.emit("chatMessage", data);
+    // Code-Editor: Code wird aktualisiert
+    socket.on('codeUpdate', (code) => {
+        socket.broadcast.emit('codeUpdate', code); // an andere Clients senden
+    });
+
+    // Chat: Neue Nachricht
+    socket.on('chatMessage', (data) => {
+      io.emit('chatMessage', data);
   });
 
-  // Code aktualisieren
-  socket.on("codeUpdate", (code) => {
-    socket.broadcast.emit("codeUpdate", code);
-  });
+    // Chat leeren
+    socket.on('clearChat', () => {
+        socket.broadcast.emit('clearChat');
+    });
 
-  // Chat löschen empfangen
-  socket.on("clearChat", () => {
-    io.emit("clearChat"); // an alle Clients senden
-  });
-
-  socket.on("disconnect", () => {
-    console.log("Ein Benutzer hat die Verbindung getrennt");
-  });
+    socket.on('disconnect', () => {
+        console.log('Ein Nutzer hat die Verbindung getrennt: ' + socket.id);
+    });
 });
 
-server.listen(3000, () => {
-  console.log("Server läuft auf http://localhost:3000");
+// Server starten
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`Server läuft unter http://localhost:${PORT}`);
 });
