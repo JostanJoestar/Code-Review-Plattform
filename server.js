@@ -16,13 +16,13 @@ io.on('connection', (socket) => {
 
     // Code-Editor: Code wird aktualisiert
     socket.on('codeUpdate', (code) => {
-        socket.broadcast.emit('codeUpdate', code); // an andere Clients senden
+        socket.broadcast.emit('codeUpdate', code);
     });
 
     // Chat: Neue Nachricht
     socket.on('chatMessage', (data) => {
-      io.emit('chatMessage', data);
-  });
+        io.emit('chatMessage', data);
+    });
 
     // Chat leeren
     socket.on('clearChat', () => {
@@ -34,8 +34,8 @@ io.on('connection', (socket) => {
     });
 });
 
-// Server starten
-const PORT = 3000;
+// ⚠️ WICHTIG: Hier kommt die Änderung
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-    console.log(`Server läuft unter http://localhost:${PORT}`);
+    console.log(`Server läuft auf Port ${PORT}`);
 });
